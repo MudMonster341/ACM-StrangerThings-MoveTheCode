@@ -136,7 +136,7 @@ def play():
 		if solved:
 			session['index'] += 1
 		else:
-			flash("Try again, Demogorgon's watching!")
+			flash("Try Again! Demogorgans are getting closer!")
 		return redirect(url_for('play'))
 	
 @app.route('/set-game-over', methods=['GET', 'POST'])
