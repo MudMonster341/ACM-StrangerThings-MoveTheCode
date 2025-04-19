@@ -1,0 +1,223 @@
+/* Stranger Things Theme CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+body {
+  background-color: #000000;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  background-size: auto 110%; /* Crop more width, focus on height */
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Mobile background adjustment */
+@media (max-width: 768px) {
+  body {
+    background-size: auto 120% !important; /* Crop even more width on mobile */
+    background-position: center center !important;
+  }
+  
+  /* Fix for blank spaces */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Container adjustments for mobile */
+  .container {
+    padding-bottom: 20px !important;
+    min-height: 100vh;
+  }
+}
+
+h1 {
+  font-family: 'Benguiat Bold', sans-serif;
+  color: #e6190e;
+  text-shadow: 0 0 20px #e6190e;
+  text-align: center;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  padding-top: 10px;
+}
+
+h1.monster-font {
+  font-family: 'Creepster', cursive, sans-serif;
+  letter-spacing: 2px;
+  font-size: 3.8rem;
+}
+
+h1.monster-font.smaller {
+  font-size: 3.2rem;
+}
+
+h1.white-text {
+  color: #ffffff;
+  text-shadow: 0 0 20px #e6190e;
+}
+
+.gamebutton, .btn {
+  background-color: #e6190e !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 25px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  font-size: 16px !important;
+  margin: 4px 2px !important;
+  cursor: pointer !important;
+  border-radius: 0 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 0 10px #e6190e !important;
+  white-space: nowrap;
+  width: auto;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: white !important;
+  border: 1px solid #e6190e !important;
+  padding: 8px 25px !important;
+  box-shadow: 0 0 10px #e6190e !important;
+}
+
+.list-group-item {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: white !important;
+  border: 1px solid #e6190e !important;
+  margin-bottom: 5px;
+}
+
+.timer {
+  font-family: 'Creepster', cursive, sans-serif;
+  color: #ffffff;
+  text-shadow: 0 0 10px #e6190e;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.box {
+  border: 1px solid #e6190e !important;
+  box-shadow: 0 0 10px #e6190e !important;
+  background-color: #e6190e !important;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase !important;
+  white-space: nowrap;
+  width: auto;
+}
+
+.acm-logo {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  opacity: 0.8;
+  display: none; /* Hide the ACM logo */
+}
+
+.stranger-things-logo {
+  display: block;
+  margin: 20px auto;
+  max-width: 350px;
+}
+
+/* Make buttons centered */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Make code display smaller */
+.line-numbers {
+  font-size: 1.2rem !important;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: visible;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #e6190e;
+  box-shadow: 0 0 10px #e6190e;
+  border-radius: 5px;
+}
+
+/* Center form elements */
+form {
+  text-align: center;
+}
+
+/* Form boxes styling */
+.login-box, .register-box {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e6190e;
+  box-shadow: 0 0 10px #e6190e;
+  margin-top: 20px;
+}
+
+.form-group label {
+  color: #e6190e;
+  font-weight: bold;
+}
+
+a {
+  color: #e6190e;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin-top: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a:hover {
+  text-shadow: 0 0 10px #e6190e;
+  color: #ff3d33;
+}
+
+/* Fixed button styling */
+.enter-upside-down {
+  display: inline-block;
+  width: auto;
+  white-space: nowrap;
+  margin: 0 auto;
+}
+
+/* Fixed code container */
+pre {
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+  background: transparent !important;
+}
+
+code {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  white-space: pre;
+  display: block;
+  width: 100%;
+}
+
+/* Styling for code blocks */
+.code-container {
+  width: 100%;
+  max-height: none;
+  overflow-y: visible;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+/* Button styling specifically for play page */
+.gate-button {
+  display: inline-block;
+  padding: 12px 30px !important;
+  font-size: 18px !important;
+} 

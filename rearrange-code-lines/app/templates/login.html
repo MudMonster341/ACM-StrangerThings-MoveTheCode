@@ -1,0 +1,49 @@
+<!-- Login Page: Uses flask's WTF form -->
+
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{%block title%}Stranger Things: Login{%endblock%}
+
+{%block main_content%}
+
+	<head>
+		<link rel="stylesheet" href="static/css/stranger-things.css">
+		<style>
+			body {
+				background-image: url('../static/images/stranger_things_background.jpg');
+				background-size: auto 110%;
+				background-position: center;
+			}
+			
+			@media (max-width: 768px) {
+                body {
+                    background-size: auto 120%;
+                    background-position: center center;
+                }
+            }
+		</style>
+	</head>
+
+	<h1 class="monster-font">Enter the Upside Down</h1>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="login-box">
+				<form action="." method="post" class="form form-horizontal" name="loginform">
+					{{ wtf.form_errors(form,"only") }}
+
+					{{ form.hidden_tag() }}
+					{{ wtf.form_field(form.id) }}<br>
+					{{ wtf.form_field(form.password) }}
+
+					<div class="button-container">
+						<button name="action_save" type="submit" class="btn btn-danger box">Enter</button>
+					</div>
+				</form>
+
+				<a href="{{ url_for('register') }}">New to Hawkins? Register here!</a>
+			</div>
+		</div>
+	</div>
+
+{%endblock%}

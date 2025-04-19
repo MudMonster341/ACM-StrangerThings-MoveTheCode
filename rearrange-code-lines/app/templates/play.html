@@ -1,0 +1,117 @@
+<!-- Page for Main Gameplay: Rearranging code lines -->
+
+{% extends "base.html" %}
+
+{%block title%}Stranger Things: Rearrange the Code{%endblock%}
+
+{%block main_content%}
+
+<head>
+    <link rel="stylesheet" href="static/css/prism.css">
+	<link rel="stylesheet" href="static/css/play.css">
+	<link rel="stylesheet" href="static/css/stranger-things.css">
+	<style>
+		body {
+			background-image: url('../static/images/stranger_things_background2.jpg');
+			background-size: auto 110%;
+            background-position: center;
+		}
+		
+		@media (max-width: 768px) {
+            body {
+                background-size: auto 120%;
+                background-position: center center;
+            }
+        }
+	</style>
+</head>
+
+<body>
+	<h1 class="monster-font white-text">Rearrange the Code to Close the Gate!</h1>   
+	<br>
+	<div>
+		<form id="endGameForm" action="{{url_for('set_game_over')}}" method="post">
+			<input type="hidden" id="timeOutInput" name="timeOut">
+		</form>
+	</div>
+	<div id="timer" class="timer h-center">
+	</div>
+
+	<div class="h-center"> 
+		<h3>
+			Dimensions saved: {{index}}{% if game_mode == 'time' %}/{{total}}{% endif %}
+		</h3>
+	</div>
+
+	<div class="code-container">
+		<div id="codeItems" class="line-numbers list-group">
+			{% for line in puzzle.puzzle_lines %}
+			<div class="list-group-item">
+				<pre data-start={{loop.index}}><code class="language-python">{{line}}</code></pre>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="button-container">
+		<script>
+			function checkPuzzle() {
+				var codeItemsDiv = document.getElementById("codeItems");
+				var codeArray = [];
+				for (var i = 0; i < codeItemsDiv.children.length; i++) {
+					var child = codeItemsDiv.children[i];
+					var codeValue = child.querySelector('code').textContent;
+					codeArray.push(codeValue);
+				}
+				document.getElementById('codeArrayInput').value = JSON.stringify(codeArray);
+				document.getElementById('timeTakenInput').value = localStorage.getItem('timeTaken');
+				console.log(parseInt("{{index|safe}}") + 1)
+				console.log(parseInt("{{total|safe}}"))
+			}
+		</script>
+		<form id="codeArrayForm" action="" method="post" onsubmit="checkPuzzle()">
+			<input type="hidden" id="codeArrayInput" name="codeArray">
+			<input type="hidden" id="timeTakenInput" name="timeTaken">
+			<button type="submit" class="btn btn-danger box gate-button">Close the Gate</button>
+		</form>
+		<script>checkPuzzle()</script>
+	</div>
+</body>
+
+<script src="static/js/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+
+<script>
+// Simple list
+Sortable.create(codeItems, {
+    animation: 150,
+	group: "localStorage",
+	/*
+	store: {
+		get: function (sortable) {
+			var order = localStorage.getItem(sortable.options.group.name);
+			console.log(order.split('|'))
+			return order ? order.split('|') : [];
+		},
+		set: function (sortable) {
+			var order = sortable.toArray();
+			localStorage.setItem(sortable.options.group.name, order.join('|'));
+			console.log("Values set")
+		}
+	},*/
+    onEnd: function (evt) {
+            var preElements = document.querySelectorAll('#codeItems pre');
+            //console.log(preElements);
+            preElements.forEach((pre, index) => {
+				pre.setAttribute('data-start', index);
+                pre.setAttribute('style', 'counter-reset: linenumber ' + index);
+            });
+        }
+})
+</script>
+<script>
+let totalSeconds = parseInt("{{game_duration|safe}}");
+</script>
+<script src="static/js/timer-mode-{{game_mode}}.js"></script>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+<!-- Page for defining global CSS -->
+
+{% extends "bootstrap/base.html" %}
+
+{%block title%}Stranger Things: Rearrange the Code{%endblock%}
+
+{% block styles %}
+	{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/stranger-things.css') }}">
+	<style>
+		@import url('https://fonts.cdnfonts.com/css/comica');
+		@import url('https://fonts.googleapis.com/css2?family=Benguiat+Bold&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        
+        /* Style flash messages (Incorrect! Try again!) */
+        .alert-warning {
+            background-color: transparent !important;
+            border-color: #e6190e !important;
+            color: #ffffff !important;
+            font-family: 'Creepster', cursive, sans-serif !important;
+            font-size: 1.5rem !important;
+            letter-spacing: 1px !important;
+            text-shadow: 0 0 10px #e6190e !important;
+            border-radius: 0 !important;
+        }
+        
+        .alert-warning .close {
+            color: #ffffff !important;
+            opacity: 1 !important;
+            text-shadow: 0 0 5px #e6190e !important;
+        }
+	</style>
+{% endblock %}
+
+{%block content %}
+
+<div class="container" style="padding: 35px;">
+    <img src="{{ url_for('static', filename='images/Stranger_Things_logo.png') }}" alt="Stranger Things Logo" class="stranger-things-logo">
+
+    {% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	    <div class="row">
+			{% for message in messages %}
+			<div class="col-12">
+				<div class="alert alert-warning" role="alert">
+						{{ message }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	    {% endif %}
+    {% endwith %}
+
+	{%block main_content%}{%endblock%}
+</div>
+
+{%endblock%}

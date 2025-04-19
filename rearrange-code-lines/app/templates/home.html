@@ -1,0 +1,114 @@
+<!-- Page for RULES screen before game starts -->
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/prism.css">
+    <link rel="stylesheet" href="static/css/stranger-things.css">
+    <style>
+        body {
+            background-image: url('../static/images/stranger_things_background.jpg');
+            background-size: auto 110%;
+            background-position: center;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                background-size: auto 120%;
+                background-position: center center;
+            }
+        }
+        
+        /* Custom styling for this page */
+        .button-container {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .page-content {
+            padding-bottom: 100px; /* Make room for the fixed button */
+        }
+        
+        /* Force Creepster font */
+        .creep-heading {
+            font-family: 'Creepster', cursive, sans-serif !important;
+            letter-spacing: 2px;
+            font-size: 3.8rem;
+        }
+    </style>
+</head>
+
+<h1 class="white-text creep-heading" style="font-family: 'Creepster', cursive, sans-serif !important;">Welcome to the Upside Down</h1>
+<body>
+    <div class="page-content">
+        <div class="code-container">
+            <div class="line-numbers">
+                <pre data-start="1"><code class="language-python">class RearrangeTheCode:
+
+    def __init__(self) -> None:
+        self.ready = True
+        self.language = "{{lang}}"
+        self.dimension = "Upside Down"
+
+    def about(self):
+        print("Your mission in Hawkins: ")
+        print("Rearrange the code lines!") {% if game_mode == 'time' %}
+        print("Solve {{total_puzzles}} puzzles before the demogorgon finds you!")
+        print("Player with minimum time saves Hawkins!") {% else %}
+        print("Within {{duration}}s")
+        print("Solve as many puzzles")
+        print("Before the Mind Flayer takes over!"){% endif %}
+    
+    def rule_1(self, puzzle: list[str]):
+        if self.submitted(puzzle):
+            if puzzle.is_solved_correctly():
+                print("Moving to the next challenge!")
+            else:
+                print("The gate is still open! Try again!")
+
+    def rule_2(self):
+        if start_game_button is pushed:
+            timer.start()
+            demogorgon.hunt()
+    
+    def rule_3(self): {% if game_mode == 'time' %}
+        if self.has_solved_all_{{total_puzzles}}_puzzles(): {% else %}
+        if timer.runs_out(): {% endif %}
+            return True
+            
+    def get_winner(self, players):
+        top3_winners = []
+        for player in players:{% if game_mode == 'time' %}
+            if player.has_minimum_time():{% else %}
+            if player.has_solved_maximum_puzzles():{% endif %}
+                top3_winners.append(player)
+        return top3_winners
+    
+    def tiebreaker(self, player1, player2):{% if game_mode == 'time' %}
+        if player1.has_minimum_time() and player2.has_minimum_time():{% else %}
+        if player1.has_solved_maximum_puzzles() and player2.has_solved_maximum_puzzles():{% endif %}
+            if player1.created_account_first():
+                winner = player1
+            elif player2.created_account_first():
+                winner = player2
+        return winner
+
+if __name__ == '__main__':
+    get_ready() and RearrangeTheCode()
+    </code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <form action="" method="post">
+            <button name="play" value="play" type="submit" class="btn btn-danger box enter-upside-down">Enter the Upside Down</button>
+        </form>
+    </div>
+</body>
+
+<script src="static/js/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
