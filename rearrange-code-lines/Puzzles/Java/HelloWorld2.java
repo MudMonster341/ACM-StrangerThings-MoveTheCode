@@ -1,7 +1,13 @@
-package Puzzles.Java;
-
 public class HelloWorld2 {
-    public static void main(String[] arg){
-        System.out.println("Hello World 2!\n");
+    public static void main(String[] args) {
+        int num = 1234;
+        int reverse = 0;
+
+        while (num != 0) {
+            reverse = reverse * 10 + num % 10;
+            num /= 10;
+        }
+
+        System.out.println("Reverse is: " + reverse);
     }
 }

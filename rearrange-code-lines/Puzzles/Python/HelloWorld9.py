@@ -1,0 +1,5 @@
+nums = list(range(1, 11))
+evens = list(filter(lambda x: x % 2 == 0, nums))
+sum_evens = sum(evens)
+print("Evens:", evens)
+print("Sum of evens:", sum_evens)

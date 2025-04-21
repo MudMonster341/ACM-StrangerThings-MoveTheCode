@@ -1,6 +1,10 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello world 1!\n");
+    int num = 6;
+    if (num % 2 == 0)
+        printf("%d is even\n", num);
+    else
+        printf("%d is odd\n", num);
     return 0;
 }

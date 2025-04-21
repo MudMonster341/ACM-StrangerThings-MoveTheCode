@@ -1,7 +1,7 @@
-import math
+def factorial(n):
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
 
-class HelloWorld:
-    def __init__(self):
-        print("Hello World 2!")
-
-HelloWorld()
+print(factorial(5))

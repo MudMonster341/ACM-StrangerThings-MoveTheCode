@@ -1,7 +1,7 @@
-import os
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-class HelloWorld:
-    def __init__(self):
-        print("Hello World 1!")
-
-HelloWorld()
+    def __str__(self):
+        return f"{self.name}, {self.age}"

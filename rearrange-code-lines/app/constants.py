@@ -24,4 +24,4 @@ PUZZLES_DIR = sys.path[0] + '/Puzzles/'
 ENV_LOCATION = sys.path[0] + '/.env'
 
 GAME_DURATION = 120 # in seconds, for game mode `time`
-MAX_PUZZLES = 3 # For game mode `puzzle`
+MAX_PUZZLES = 10 # For game mode `puzzle`
